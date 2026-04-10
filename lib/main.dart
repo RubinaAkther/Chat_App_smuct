@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:mastery_flutter/firebase_options.dart';
+import 'package:mastery_flutter/routes/app_pages.dart';
+import 'package:mastery_flutter/theme/app_theme.dart' ;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,7 +16,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
+      title: 'ChatApp',
       theme: AppTheme.lightTheme,
       themeMode: ThemeMode.light,
       initialRoute: AppPages.initial,

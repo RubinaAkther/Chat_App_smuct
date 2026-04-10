@@ -51,19 +51,11 @@ class AppTheme {
         fontWeight: FontWeight.w500,
         color: textPrimaryColor,
       ),
-      bodyLarge: const TextStyle(
-        color: textSecondaryColor,
-        fontSize: 16,
-      ),
-      bodyMedium: const TextStyle(
-        color: textSecondaryColor,
-        fontSize: 14,
-      ),
+      bodyLarge: const TextStyle(color: textSecondaryColor, fontSize: 16),
+      bodyMedium: const TextStyle(color: textSecondaryColor, fontSize: 14),
     ),
 
-    extensions: const [
-      LuminosColors(success: successColor),
-    ],
+    extensions: const [LuminosColors(success: successColor)],
   );
 
   // ───── DARK THEME ─────
@@ -88,14 +80,8 @@ class AppTheme {
     dividerColor: borderColor,
 
     textTheme: GoogleFonts.poppinsTextTheme().copyWith(
-      bodyLarge: const TextStyle(
-        color: textPrimaryColor,
-        fontSize: 16,
-      ),
-      bodyMedium: const TextStyle(
-        color: textSecondaryColor,
-        fontSize: 14,
-      ),
+      bodyLarge: const TextStyle(color: textPrimaryColor, fontSize: 16),
+      bodyMedium: const TextStyle(color: textSecondaryColor, fontSize: 14),
     ),
 
     appBarTheme: const AppBarTheme(
@@ -108,31 +94,62 @@ class AppTheme {
         fontWeight: FontWeight.w600,
         color: textPrimaryColor,
       ),
-      iconTheme: IconThemeData(
-        color: textPrimaryColor,
-      ),
-      actionsIconTheme: IconThemeData(
-        color: textPrimaryColor,
-      ),
+      iconTheme: IconThemeData(color: textPrimaryColor),
+      actionsIconTheme: IconThemeData(color: textPrimaryColor),
     ),
 
     elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(backgroundColor: primaryColor,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: primaryColor,
+        foregroundColor: Colors.white,
+        elevation: 0,
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        textStyle: GoogleFonts.poppins(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+    ),
+
+    cardTheme: CardThemeData(
+      color: cardColor,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: const BorderSide(color: borderColor),
+      ),
+    ),
+
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: cardColor,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: borderColor),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: borderColor),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: primaryColor, width: 2),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: errorColor),
+      ),
+
+      contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+    ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: primaryColor,
       foregroundColor: Colors.white,
       elevation: 0,
-      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular((12))
-      ),
-      textStyle: GoogleFonts.poppins( fontSize: 16,
-      fontWeight: FontWeight.w600)
-      
-      )
-    )
+    ),
 
-    extensions: const [
-      LuminosColors(success: successColor),
-    ],
+    extensions: const [LuminosColors(success: successColor)],
   );
 }
 
@@ -150,8 +167,6 @@ class LuminosColors extends ThemeExtension<LuminosColors> {
   @override
   LuminosColors lerp(LuminosColors? other, double t) {
     if (other == null) return this;
-    return LuminosColors(
-      success: Color.lerp(success, other.success, t)!,
-    );
+    return LuminosColors(success: Color.lerp(success, other.success, t)!);
   }
 }
